@@ -1,0 +1,2 @@
+var html = "<%=j render 'topics/single_comment', comment: @comment %>"
+$("#comment_<%= @comment.id%>").replaceWith(html);

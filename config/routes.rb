@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
+  post 'comments/:id/vote/:direction' => 'comments#vote', as: :comment_vote
+
   resources :comments, only: [:create]
   resources :topics, only: [:show]
 
