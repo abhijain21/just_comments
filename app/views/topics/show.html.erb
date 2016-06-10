@@ -20,10 +20,34 @@
 
 <div class="all_comments">
 	<% if @comments.present? %>
-		<% @comments.each do |c| %>
-			<%= render 'single_comment', comment: c %>
-		<% end %>
+		<%= render "comments_list" %>
 	<% else %>
 		<div class="no_comments">No comments on this topic.</div>
 	<% end %>
 </div>
+
+
+<script type="text/javascript">
+	$(document).on('ready', function() {
+		if ($('.infinite_scroll').size() > 0) {
+		  $(window).on('scroll', function() {
+		    var more_posts_url;
+		    more_posts_url = $('.pagination a[rel=next]').attr('href');
+		    if (more_posts_url && $(window).scrollTop() > $(document).height() - $(window).height() - 200) {
+		      $('.pagination').html("");
+		      $.ajax({
+		        url: more_posts_url,
+		        success: function(data) {
+		          return $(".all_comments").append(data);
+		        }
+		      });
+		    }
+		    if (!more_posts_url) {
+		      return $('.pagination').html("");
+		    }
+		  });
+		  return;
+		}
+
+	});
+</script>

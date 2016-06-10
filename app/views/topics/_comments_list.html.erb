@@ -1,0 +1,7 @@
+<% @comments.each do |c| %>
+	<%= render 'single_comment', comment: c %>
+<% end %>
+
+<div class="infinite_scroll">
+	<%= will_paginate(@comments) %>
+</div>
