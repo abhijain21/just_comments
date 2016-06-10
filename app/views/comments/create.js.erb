@@ -1,0 +1,6 @@
+var html = "<%=j render 'topics/single_comment', comment: @comment %>";
+$(html).hide().prependTo(".all_comments").fadeIn('slow');
+$("#comment_form").get(0).reset();
+$(".no_comments").hide();
+$count = $(".sub-menu .active .single_topic .comments_count");
+$count.html(parseInt($count.text()) + 1);

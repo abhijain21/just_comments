@@ -1,38 +1,29 @@
 <div class="form_comment">
-	<div class="row">
-	  <div class="col-md-11">
-		<h4>Add a comment to this topic</h4>
-		<div class="form-group">
-		<label>Email</label>
-		<input id="commentor_email" type="text" name="email" placeholder="email" class="form-control" />
-		</div>
-		<div class="form-group">
-		<label>Comment</label>
-		<textarea id="new_comment" placeholder="Start typing..." class="form-control"></textarea>
-		</div>
-		<button class="btn btn-primary pull-right">Submit</button>
-	  </div>
-	</div>
-</div>
-<% if @comments.present? %>
-	<% @comments.each do |c| %>
+	<%= form_tag(comments_path, {authenticity_token: form_authenticity_token, remote: true, id:"comment_form"}) do %>
+		<%= hidden_field_tag "topic_id", @topic.id %>
 		<div class="row">
 		  <div class="col-md-11">
-			  <div class="single_comment">
-			  	<div class="comment_text"><%= c.value %></div>
-			  	<div class="comment_user"><i class="fa fa-user"></i> <%= c.user.email %></div>
-			  	<div class="comment_time"><i class="fa fa-clock-o"></i> <%= c.created_at %></div>
-			  </div>
-		  </div>
-		  <div class="col-md-1">
-		  	<div class="votes">
-		  		<div><i class="fa fa-thumbs-up"></i></div>
-		  		<div>20</div>
-		  		<div><i class="fa fa-thumbs-down"></i></div>
-		  	</div>
+			<h4>Add a comment to this topic</h4>
+			<div class="form-group">
+			<label>Email</label>
+			<input id="commentor_email" type="email" name="email" placeholder="email" class="form-control" required="true" />
+			</div>
+			<div class="form-group">
+			<label>Comment</label>
+			<textarea required="true"  id="new_comment" name="comment" placeholder="Start typing..." class="form-control"></textarea>
+			</div>
+			<button class="btn btn-primary pull-right">Submit</button>
 		  </div>
 		</div>
 	<% end %>
-<% else %>
-	<div>No comments on this topic.</div>
-<% end %>
+</div>
+
+<div class="all_comments">
+	<% if @comments.present? %>
+		<% @comments.each do |c| %>
+			<%= render 'single_comment', comment: c %>
+		<% end %>
+	<% else %>
+		<div class="no_comments">No comments on this topic.</div>
+	<% end %>
+</div>

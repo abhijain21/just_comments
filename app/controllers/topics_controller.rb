@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
 		@topics = Topic.includes(:comments)
 		@topic = Topic.find(params[:id])
 
-		@comments = @topic.comments.includes(:user)
+		@comments = @topic.comments.order("created_at desc").includes(:user)
 	end
-	
+
 end

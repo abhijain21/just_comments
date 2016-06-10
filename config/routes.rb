@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
+  resources :comments, only: [:create]
   resources :topics, only: [:show]
 
   root 'topics#index'
