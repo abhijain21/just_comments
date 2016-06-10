@@ -1,0 +1,8 @@
+<% @topics.each do |t| %>
+  <%= link_to topic_path(t.id), class: sidebar_active_class(t) do %>
+    <div class="single_topic">
+      <span class="topic_name"><%= t.value %></span>
+      <span class="comments_count"><%= t.comments.size %></span>
+  </div>
+	  <% end %>
+<% end %>

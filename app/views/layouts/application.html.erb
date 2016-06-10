@@ -3,12 +3,35 @@
 <head>
   <title>JustComments</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css', media: 'all' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="logo">Test</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="tabs">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="sub-menu">
+					<%= render "left_sidebar" %>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="content">
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>

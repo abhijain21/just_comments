@@ -1,0 +1,107 @@
+body {
+	padding: 60px 0 10px 0;
+}
+.header {
+	padding: 10px 0;
+	background: #fff;
+	border-bottom: 1px solid #f1f1f1;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+}
+.logo {
+	font-size: 24px;
+	color: #464646;
+	font-weight: bold;
+}
+.tabs {
+	border: 1px solid #e2e2e2;
+	background: #f9f9f9;
+	padding: 30px;
+	min-height: 600px;
+	margin: 30px 0;
+	border-radius: 4px;
+}
+.content {
+	border: 1px solid #e2e2e2;
+	background: #fff;
+	padding: 30px;
+	border-radius: 4px;
+}
+.sub-menu {
+	border: 1px solid #e2e2e2;
+	background: #fff;
+	border-radius: 4px;
+	font-size: 16px;
+	height: 400px;
+	overflow: auto;
+}
+.sub-menu a {
+	display: block;
+	padding: 0 15px;
+	color: #9b9b9b;
+	line-height: 40px;
+	position: relative;
+}
+.sub-menu a+a {
+	border-top: 1px solid #e2e2e2;
+}
+.sub-menu a.active {
+	background: #d7fddd;
+	color: #464646;
+}
+.topic_name {
+	display: block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-right: 30px;
+}
+.sub-menu .comments_count {
+	width: 20px;
+	height: 20px;
+	float: right;
+	background: #d1e6ff;
+	border: 1px solid #70c3f3;
+	color: #464646;
+	border-radius: 100%;
+	line-height: 18px;
+	text-align: center;
+	font-size: 11px;
+	position: absolute;
+	right: 15px;
+	top: 10px;
+}
+.single_comment {
+	border: 1px solid #e2e2e2;
+	background: #f9f9f9;
+	padding: 15px;
+	border-radius: 4px;
+}
+.content .row+.row {
+	margin-top: 30px;
+}
+.comment_text {
+	padding-bottom: 10px;
+}
+.comment_user {
+	text-align: right;
+	font-size: 15px;
+	color: #464646;
+	font-weight: bold;
+}
+.comment_time {
+	padding-top: 4px;
+	font-size: 11px;
+}
+.votes {
+	padding-top: 10px;
+	font-size: 18px;
+	margin-left: -10px;
+}
+.form_comment {
+	width: 100%;
+	float: left;
+	padding-bottom: 30px;
+}
