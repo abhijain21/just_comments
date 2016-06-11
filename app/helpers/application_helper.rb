@@ -8,4 +8,8 @@ module ApplicationHelper
   	400
   end
 
+  def vote_button_class comment, cookie_id
+  	(cookies[cookie_id]||'').split(',').include?(comment.id.to_s) ? '' : 'vote_button'
+  end
+
 end

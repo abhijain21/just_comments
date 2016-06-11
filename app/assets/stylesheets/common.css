@@ -102,6 +102,7 @@ body {
 }
 .votes .vote_button {
 	color: #EA9A9A;
+	cursor: pointer;
 }
 .votes .vote_button.active {
 	color: #AAA6EA;

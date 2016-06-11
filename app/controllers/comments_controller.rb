@@ -12,8 +12,16 @@ class CommentsController < ApplicationController
 
 	def vote
 		@comment = Comment.find(params[:id])
-		votes = @comment.vote_count
-		@comment.vote_count = params[:direction]=="up" ? votes + 1 : votes - 1
+
+		if params[:direction]=="up"
+			@comment.vote_count += 1 if !(cookies[:all_ups] || "").split(",").include?(@comment.id.to_s)
+			cookies[:all_ups] = ((cookies[:all_ups] || "").split(",") << @comment.id).uniq.join(",")
+			cookies[:all_downs] = (cookies[:all_downs] || "").split(",") - [@comment.id.to_s]
+		else
+			@comment.vote_count -= 1 if !(cookies[:all_downs] || "").split(",").include?(@comment.id.to_s)
+			cookies[:all_downs] = ((cookies[:all_downs] || "").split(",") << @comment.id).uniq.join(",")
+			cookies[:all_ups] = (cookies[:all_ups] || "").split(",") - [@comment.id.to_s]
+		end
 		@comment.save
 	end
 
