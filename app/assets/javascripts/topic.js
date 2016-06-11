@@ -1,4 +1,7 @@
-$(document).on('ready', function() {
+$(document).on('ready', ready);
+$(document).on('page:load', ready);
+
+function ready() {
 	$(".all_comments").on("click", ".votes .vote_button", function() {
 		$(this).addClass("active");
 		$.ajax({
@@ -29,5 +32,4 @@ $(document).on('ready', function() {
 	  });
 	  return;
 	}
-
-});
+}
