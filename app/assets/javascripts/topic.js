@@ -2,6 +2,7 @@ $(document).on('ready', ready);
 $(document).on('page:load', ready);
 
 function ready() {
+	// vote functionality click handling
 	$(".all_comments").on("click", ".votes .vote_button", function() {
 		$(this).addClass("active");
 		$.ajax({
@@ -12,7 +13,7 @@ function ready() {
 			}
 		});
 	});
-
+	// infinite scroll js
 	if ($('.infinite_scroll').size() > 0) {
 	  $(window).on('scroll', function() {
 	    var more_posts_url;
