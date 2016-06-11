@@ -4,4 +4,8 @@ module ApplicationHelper
     request.original_fullpath == topic_path(topic.id) ? 'active' : ''
   end
 
+  def trim_length
+  	400
+  end
+
 end

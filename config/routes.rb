@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   post 'comments/:id/vote/:direction' => 'comments#vote', as: :comment_vote
 
-  resources :comments, only: [:create]
+  resources :comments, only: [:create, :show]
   resources :topics, only: [:show]
 
   root 'topics#index'

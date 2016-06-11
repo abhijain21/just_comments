@@ -1,15 +1,22 @@
 <div class="row" id="comment_<%= comment.id %>">
   <div class="col-md-11">
 	  <div class="single_comment">
-	  	<div class="comment_text"><%= comment.value %></div>
+	  	<div class="comment_text">
+        <%= truncate(comment.value, length: trim_length) %>
+        <% if comment.value.length > trim_length %>
+          <%= link_to comment_path(comment), remote: true do %>
+            <span>(show more)</span>
+          <% end %>
+        <% end %>
+      </div>
 	  	<div class="comment_user"><i class="fa fa-user"></i> <%= comment.user.email %></div>
 	  	<div class="comment_time"><i class="fa fa-clock-o"></i> <%= comment.created_at.in_time_zone("New Delhi").strftime('%d %b, %I:%M %p') %></div>
 	  </div>
   </div>
   <div class="col-md-1">
   	<div class="votes">
-  		<div class="vote_button" data-href="<%= comment_vote_path(comment.id, direction: :up) %>"><i class="fa fa-thumbs-up"></i></div>
-  		<div><%= comment.vote_count %></div>
+      <div class="vote_button" data-href="<%= comment_vote_path(comment.id, direction: :up) %>"><i class="fa fa-thumbs-up"></i></div>
+      <div><%= comment.vote_count %></div>
       <div class="vote_button" data-href="<%= comment_vote_path(comment.id, direction: :down) %>"><i class="fa fa-thumbs-down"></i></div>
   	</div>
   </div>
